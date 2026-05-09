@@ -214,7 +214,7 @@ function Card({
   children: React.ReactNode;
 }) {
   return (
-    <div className="panel p-5">
+    <div className="panel min-w-0 overflow-hidden p-5">
       <h3 className="text-base font-semibold text-zinc-100">{title}</h3>
       <p className="mt-2 text-sm leading-relaxed text-zinc-400">{body}</p>
       <div className="mt-4">{children}</div>
@@ -224,9 +224,11 @@ function Card({
 
 function Endpoint({ path, desc }: { path: string; desc: string }) {
   return (
-    <div className="flex items-center gap-3 rounded-md border border-ink-600/60 bg-ink-900/60 px-3 py-2">
-      <code className="text-argus-300">{path}</code>
-      <span className="truncate text-[11px] text-zinc-500">{desc}</span>
+    <div className="flex min-w-0 items-center gap-3 rounded-md border border-ink-600/60 bg-ink-900/60 px-3 py-2">
+      <code className="shrink-0 text-argus-300">{path}</code>
+      <span className="min-w-0 flex-1 truncate text-[11px] text-zinc-500">
+        {desc}
+      </span>
     </div>
   );
 }

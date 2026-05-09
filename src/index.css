@@ -1,0 +1,112 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@keyframes scroll-rtl {
+  from {
+    transform: translate3d(110vw, 0, 0);
+  }
+  to {
+    transform: translate3d(-110vw, 0, 0);
+  }
+}
+
+@keyframes scroll-ltr {
+  from {
+    transform: translate3d(-110vw, 0, 0);
+  }
+  to {
+    transform: translate3d(110vw, 0, 0);
+  }
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    font-family: "Inter", system-ui, -apple-system, sans-serif;
+    background-color: #060814;
+    color: #f4f4f5;
+    font-feature-settings: "ss01", "cv11";
+  }
+
+  ::selection {
+    background-color: rgba(45, 91, 255, 0.32);
+    color: #f4f4f5;
+  }
+}
+
+@layer components {
+  .container-px {
+    @apply px-4 sm:px-6 lg:px-8;
+  }
+
+  .panel {
+    @apply rounded-xl border border-ink-600/60 bg-ink-850/60 backdrop-blur-md;
+  }
+
+  .panel-hover {
+    @apply transition-all duration-300 hover:border-argus-500/50 hover:bg-ink-800/80;
+  }
+
+  .text-gradient-argus {
+    background: linear-gradient(110deg, #2d5bff 0%, #6b86ff 40%, #ff4fb5 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  .text-gradient-warm {
+    background: linear-gradient(110deg, #ff7a30 0%, #ff4fb5 55%, #8ea4ff 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  .text-gradient-clay {
+    background: linear-gradient(110deg, #d4b89a 0%, #c4a584 50%, #b68868 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  .grid-bg {
+    background-image:
+      linear-gradient(rgba(255, 255, 255, 0.035) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255, 255, 255, 0.035) 1px, transparent 1px);
+    background-size: 56px 56px;
+    mask-image: radial-gradient(ellipse 80% 60% at 50% 30%, black 30%, transparent 80%);
+  }
+
+  .glow-ring {
+    box-shadow:
+      0 0 0 1px rgba(45, 91, 255, 0.5),
+      0 0 32px rgba(45, 91, 255, 0.3),
+      inset 0 0 16px rgba(45, 91, 255, 0.12);
+  }
+
+  .display-tight {
+    font-feature-settings: "ss01", "cv11";
+    letter-spacing: -0.035em;
+    line-height: 0.96;
+  }
+
+  .eyebrow {
+    @apply font-mono text-[11px] uppercase tracking-[0.22em] text-argus-300;
+  }
+
+  .lede {
+    @apply text-lg leading-[1.6] text-zinc-300 sm:text-xl;
+  }
+
+  .ambient-blob {
+    @apply pointer-events-none absolute rounded-full blur-3xl;
+    will-change: transform;
+  }
+
+  .focus-ring {
+    @apply focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-argus-400 focus-visible:ring-offset-2 focus-visible:ring-offset-ink-950;
+  }
+}

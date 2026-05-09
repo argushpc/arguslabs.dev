@@ -1,0 +1,36 @@
+# Dependencies
+node_modules
+
+# Build output
+dist
+dist-ssr
+
+# Vite cache
+.vite
+
+# TypeScript build info
+*.tsbuildinfo
+
+# Emitted from .ts configs
+vite.config.js
+vite.config.d.ts
+
+# Logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+pnpm-debug.log*
+
+# Environment / secrets
+.env
+.env.*
+!.env.example
+
+# Editor / OS
+.DS_Store
+.vscode
+.idea
+*.swp
+
+# Local-only
+*.local

@@ -10,7 +10,7 @@ export default function Hero() {
     >
       <AmbientBackdrop />
 
-      <div className="container-px relative mx-auto max-w-6xl pb-24 pt-14 sm:pt-20 lg:pb-32 lg:pt-24">
+      <div className="container-px relative mx-auto max-w-6xl pb-24 pt-12 sm:pt-20 lg:pb-32 lg:pt-24">
         <div className="mx-auto max-w-4xl">
           <div className="inline-flex items-center gap-2 rounded-full border border-argus-500/30 bg-argus-500/[0.06] px-3 py-1">
             <span className="relative flex h-1.5 w-1.5">

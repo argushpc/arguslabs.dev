@@ -31,6 +31,14 @@ Output goes to `dist/`.
 - `tailwind.config.ts` — palette (Luminous Blue, Energy Orange, Pop Pink, Meadowland, Clay) and motion keyframes
 - `public/favicon.svg` — favicon (signal-bar mark)
 
+## Deployment
+
+Hosted on GitHub Pages at https://arguslabs.dev.
+
+Every push to `main` triggers `.github/workflows/deploy.yml`, which runs `npm ci && npm run build` and publishes `dist/` to GitHub Pages. The custom domain is set via `public/CNAME` (Vite copies it into the build output).
+
+To change the domain: edit `public/CNAME` and update DNS at the registrar.
+
 ## License
 
 Proprietary. All rights reserved. See [LICENSE](LICENSE).

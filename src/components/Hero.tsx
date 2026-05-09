@@ -1,4 +1,5 @@
 import { ArrowRight, Github } from "lucide-react";
+import { smoothScrollHandler } from "../lib/anchor";
 import { GITHUB_URL } from "../lib/links";
 
 export default function Hero() {
@@ -39,6 +40,7 @@ export default function Hero() {
           <div className="mt-10 flex flex-wrap items-center gap-3">
             <a
               href="#install"
+              onClick={smoothScrollHandler("install")}
               className="focus-ring group inline-flex h-12 items-center gap-2 rounded-lg bg-argus-500 px-6 text-sm font-semibold text-white shadow-[0_0_0_1px_rgba(45,91,255,0.5),0_8px_32px_-4px_rgba(45,91,255,0.6)] transition-all hover:bg-argus-400 hover:shadow-[0_0_0_1px_rgba(45,91,255,0.7),0_12px_44px_-4px_rgba(45,91,255,0.7)]"
             >
               Get started

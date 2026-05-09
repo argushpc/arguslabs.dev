@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { Github, Mail } from "lucide-react";
+import { smoothScrollHandler } from "../lib/anchor";
 import { cn } from "../lib/cn";
 import { CONTACT_EMAIL, GITHUB_URL } from "../lib/links";
 import { Wordmark } from "./Wordmark";
@@ -31,7 +32,12 @@ export default function Navbar() {
       )}
     >
       <div className="container-px mx-auto flex h-16 max-w-6xl items-center justify-between">
-        <a href="#top" aria-label="ARGUS home" className="focus-ring rounded">
+        <a
+          href="#top"
+          onClick={smoothScrollHandler("top")}
+          aria-label="ARGUS home"
+          className="focus-ring rounded"
+        >
           <Wordmark size="md" />
         </a>
 
@@ -40,6 +46,7 @@ export default function Navbar() {
             <a
               key={link.href}
               href={link.href}
+              onClick={smoothScrollHandler(link.href.slice(1))}
               className="focus-ring rounded-sm text-sm text-zinc-400 transition-colors hover:text-zinc-100"
             >
               {link.label}

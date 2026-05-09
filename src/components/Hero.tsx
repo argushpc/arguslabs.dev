@@ -151,7 +151,7 @@ function ScrollBar({
 
 function CommandCard() {
   return (
-    <div className="relative">
+    <div className="relative min-w-0">
       <div
         className="pointer-events-none absolute -inset-px rounded-2xl opacity-70"
         style={{
@@ -218,7 +218,7 @@ function CommandCard() {
 
 function StatusCard() {
   return (
-    <div className="relative h-full">
+    <div className="relative h-full min-w-0">
       <div
         className="pointer-events-none absolute -inset-px rounded-2xl opacity-60"
         style={{

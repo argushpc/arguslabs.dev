@@ -164,14 +164,14 @@ argus-scheduler release`}
           </Card>
         </div>
 
-        <div className="mt-12 panel relative overflow-hidden p-6">
+        <div className="mt-12 panel relative overflow-hidden p-6 sm:p-8">
           <div className="grid gap-6 sm:grid-cols-[1fr_auto] sm:items-center">
-            <div>
+            <div className="text-center sm:text-left">
               <div className="eyebrow">Active development</div>
               <h3 className="mt-2 text-2xl font-bold text-zinc-100">
                 ARGUS is early. We&apos;d like your help.
               </h3>
-              <p className="mt-3 max-w-2xl text-[15px] leading-[1.65] text-zinc-400">
+              <p className="mx-auto mt-3 max-w-2xl text-[15px] leading-[1.65] text-zinc-400 sm:mx-0">
                 Areas where contributions would land hardest: additional eBPF
                 probes (scheduler latency, page faults, cgroup pressure),
                 smarter detection (ML anomaly, signal correlation), packaging
@@ -180,7 +180,7 @@ argus-scheduler release`}
                 touch.
               </p>
             </div>
-            <div className="flex flex-wrap gap-3">
+            <div className="flex flex-wrap justify-center gap-3 sm:justify-start">
               <a
                 href={`mailto:${CONTACT_EMAIL}`}
                 className="focus-ring inline-flex h-11 items-center gap-2 rounded-lg bg-argus-500 px-5 text-sm font-semibold text-white transition-colors hover:bg-argus-400"

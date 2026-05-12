@@ -1,5 +1,6 @@
 import { useState } from "react";
-import { Check, Copy, ExternalLink, Server, Box } from "lucide-react";
+import { Link } from "react-router-dom";
+import { Check, Copy, ExternalLink, Server, Box, ArrowRight } from "lucide-react";
 import { SectionHeader } from "./Features";
 import { cn } from "../lib/cn";
 import { CONTACT_EMAIL, GITHUB_URL } from "../lib/links";
@@ -78,11 +79,26 @@ export default function Install() {
       <div className="container-px mx-auto max-w-6xl">
         <SectionHeader
           eyebrow="Deploy"
-          title="Two paths. Pick whichever matches your stack."
-          subtitle="Run ARGUS standalone with the bundled Prometheus + Grafana, or scrape it from your existing observability stack. The agent is the same in both modes."
+          title="Getting ARGUS running"
+          subtitle="Run it standalone with the bundled Prometheus + Grafana, or point your existing observability stack at the /metrics endpoint. The agent binary is the same either way."
         />
 
-        <div className="mt-12 panel overflow-hidden">
+        <Link
+          to="/guides/lima"
+          className="focus-ring group mt-8 inline-flex items-center gap-3 rounded-xl border border-argus-500/30 bg-argus-500/[0.06] px-5 py-3.5 transition-colors hover:border-argus-500/50 hover:bg-argus-500/[0.1]"
+        >
+          <span>
+            <span className="block text-sm font-semibold text-zinc-100">
+              No cluster? Try it on Lima VMs
+            </span>
+            <span className="block text-[13px] text-zinc-400">
+              Step-by-step guide to a two-node Soft-RoCE test environment on your laptop.
+            </span>
+          </span>
+          <ArrowRight className="h-4 w-4 shrink-0 text-argus-400 transition-transform group-hover:translate-x-0.5" />
+        </Link>
+
+        <div className="mt-8 panel overflow-hidden">
           <div className="flex flex-wrap border-b border-ink-600/60">
             {TABS.map((t) => {
               const Icon = t.icon;
@@ -136,7 +152,7 @@ export default function Install() {
         <div className="mt-12 grid gap-4 lg:grid-cols-2">
           <Card
             title="Scheduler integration"
-            body="Drains unhealthy nodes from SLURM (Kubernetes is on the roadmap). A reconciliation loop converges ARGUS's desired state with the scheduler's observed state. Operator holds prevent ARGUS from resuming externally-drained nodes."
+            body="Drains unhealthy nodes from SLURM (Kubernetes is on the roadmap). A reconciliation loop keeps ARGUS state and scheduler state in sync. Operator holds let you pin a node as drained independently of ARGUS."
           >
             <CodeBlock
               compact
@@ -172,12 +188,12 @@ argus-scheduler release`}
                 ARGUS is early. We&apos;d like your help.
               </h3>
               <p className="mx-auto mt-3 max-w-2xl text-[15px] leading-[1.65] text-zinc-400 sm:mx-0">
-                Areas where contributions would land hardest: additional eBPF
-                probes (scheduler latency, page faults, cgroup pressure),
-                smarter detection (ML anomaly, signal correlation), packaging
-                (RPM/DEB, container images), and real-world IB failure-pattern
-                characterization. If any of that is your wheelhouse, get in
-                touch.
+                We could especially use help with: additional eBPF probes
+                (scheduler latency, page faults, cgroup pressure), smarter
+                detection (ML anomaly scoring, signal correlation), packaging
+                (RPM/DEB, container images), and real-world InfiniBand
+                failure-pattern data. If any of that overlaps with your
+                work, we&apos;d love to hear from you.
               </p>
             </div>
             <div className="flex flex-wrap justify-center gap-3 sm:justify-start">

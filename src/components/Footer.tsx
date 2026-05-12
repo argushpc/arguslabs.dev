@@ -10,8 +10,8 @@ export default function Footer() {
           <div>
             <Wordmark size="lg" />
             <p className="mt-4 max-w-md text-sm leading-relaxed text-zinc-500">
-              Adaptive RDMA Guard &amp; Utilization Sentinel. Built for HPC
-              clusters that can&apos;t afford a silent fabric.
+              Adaptive RDMA Guard &amp; Utilization Sentinel. Network health
+              monitoring for HPC clusters.
             </p>
           </div>
 

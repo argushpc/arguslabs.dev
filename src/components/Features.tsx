@@ -28,19 +28,19 @@ const FEATURES = [
   {
     icon: Gauge,
     title: "Eleven detection rules",
-    body: "IRQ skew, RDMA spikes, link degradation, slab-pressure correlation, rising error trend, latency-drift z-score, throughput drop, NAPI saturation, CQ jitter, congestion spread, PCIe bottleneck. Reactive on errors, predictive on drift. Each rule carries a confidence weight; correlated clusters trip the state machine.",
+    body: "IRQ skew, RDMA spikes, link degradation, slab-pressure correlation, rising error trend, latency-drift z-score, throughput drop, NAPI saturation, CQ jitter, congestion spread, PCIe bottleneck. Some rules are reactive (error counters); others are predictive (drift z-scores). Each carries a confidence weight.",
     chips: ["EWMA", "peak-hold", "z-score"],
   },
   {
     icon: Workflow,
     title: "Hardened state machine",
-    body: "Healthy, Degraded, and Critical transitions use asymmetric hysteresis, dwell timers, and confidence-weighted signal fusion. Anti-flapping by construction. Isolated noise stays below the dwell timer; correlated signal clusters trip cleanly.",
+    body: "Three states (Healthy, Degraded, Critical) with asymmetric thresholds for escalation vs. recovery. Dwell timers require signals to hold before a transition fires, so transient noise doesn't cause flapping.",
     chips: ["hysteresis", "dwell timers", "smoothing"],
   },
   {
     icon: ShieldCheck,
     title: "Scheduler integration",
-    body: "Reconciliation loop converges ARGUS state with your scheduler. Drains unhealthy nodes, resumes recovered ones, respects operator holds. Operator holds prevent ARGUS from resuming externally-drained nodes.",
+    body: "A reconciliation loop keeps ARGUS state and scheduler state in sync. Drains unhealthy nodes, resumes recovered ones. Operator holds let you pin a node as drained independently of ARGUS.",
     chips: ["SLURM", "K8s · WIP", "operator holds"],
   },
   {
@@ -73,8 +73,8 @@ export default function Features() {
       <div className="container-px mx-auto max-w-6xl">
         <SectionHeader
           eyebrow="Capabilities"
-          title="Two sources. Eleven rules. One state machine."
-          subtitle="ARGUS reads kernel signals through eBPF and InfiniBand counters via sysfs, fuses them through confidence-weighted detection, and drives a state machine that acts via your scheduler. Under 1% CPU at the default 3-second window."
+          title="What does ARGUS do?"
+          subtitle="Reads kernel signals via eBPF and InfiniBand counters via sysfs. Runs eleven detection rules with confidence weighting. Drives a three-state machine that drains and resumes nodes through your scheduler. Under 1% CPU at the default 3-second window."
         />
 
         <div className="mt-14 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">

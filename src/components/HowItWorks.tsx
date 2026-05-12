@@ -4,7 +4,7 @@ const PIPELINE = [
   {
     step: "01",
     title: "In-kernel counters",
-    body: "kprobes and tracepoints attach to slab, IRQ, NAPI, and CQ submit/poll paths. Per-CPU BPF maps increment at nanosecond scale. No ring buffers, no syscall storms.",
+    body: "kprobes and tracepoints attach to slab, IRQ, NAPI, and CQ submit/poll paths. Counters increment in per-CPU BPF maps with no ring buffers and no userspace copies on the hot path.",
   },
   {
     step: "02",
@@ -19,7 +19,7 @@ const PIPELINE = [
   {
     step: "04",
     title: "State machine and actions",
-    body: "Asymmetric hysteresis and dwell timers gate transitions between Healthy, Degraded, and Critical. Scheduler integration drains and resumes nodes on transitions. Optional webhooks fire alongside when configured.",
+    body: "Dwell timers and asymmetric thresholds gate transitions between Healthy, Degraded, and Critical. The scheduler integration drains or resumes nodes on state change. Webhooks can fire alongside if configured.",
   },
 ];
 
@@ -50,8 +50,8 @@ export default function HowItWorks() {
       <div className="container-px mx-auto max-w-6xl">
         <SectionHeader
           eyebrow="Architecture"
-          title="Kernel signals in. Healthy, Degraded, or Critical out."
-          subtitle="Four stages: probe, aggregate, detect, act. Each stage is hardened against the failure modes of the layer below it."
+          title="How the pipeline works"
+          subtitle="Four stages (probe, aggregate, detect, act) running once per window (default 3 seconds). Each stage only consumes what the previous stage produces, so missing probes degrade gracefully."
         />
 
         <div className="mt-14 grid gap-12 lg:grid-cols-[1fr_1.1fr] lg:gap-10">
@@ -69,7 +69,7 @@ export default function HowItWorks() {
             <div>
               <div className="eyebrow">State machine</div>
               <h3 className="mt-2 text-2xl font-bold text-zinc-100">
-                Hardened against flapping by construction.
+                Designed to avoid flapping.
               </h3>
             </div>
             <div className="hidden font-mono text-[11px] text-zinc-500 sm:block">

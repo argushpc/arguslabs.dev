@@ -23,18 +23,19 @@ export default function Hero() {
           </div>
 
           <h1 className="display-tight mt-8 text-5xl font-extrabold text-zinc-50 sm:text-6xl lg:text-[80px]">
-            The kernel sees fabric
+            ARGUS catches fabric
             <br />
-            degradation first.{" "}
-            <span className="text-gradient-argus">ARGUS shows you.</span>
+            degradation{" "}
+            <span className="text-gradient-argus">before jobs notice.</span>
           </h1>
 
           <p className="lede mt-8 max-w-2xl">
-            A node-local agent that fuses{" "}
-            <span className="text-zinc-100">eBPF kernel signals</span> with{" "}
-            <span className="text-zinc-100">InfiniBand hardware counters</span>.
-            Drains unhealthy nodes from your scheduler automatically, using
-            confidence-weighted state transitions and dwell-timed hysteresis.
+            ARGUS is a node-local agent that reads{" "}
+            <span className="text-zinc-100">eBPF kernel signals</span> and{" "}
+            <span className="text-zinc-100">InfiniBand hardware counters</span>,
+            then decides whether a node is healthy, degraded, or critical.
+            When confidence is high enough for long enough, it drains the node
+            from your scheduler and resumes it on recovery.
           </p>
 
           <div className="mt-10 flex flex-wrap items-center gap-3">

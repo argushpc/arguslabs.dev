@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 import { Github, Mail } from "lucide-react";
 import { smoothScrollHandler } from "../lib/anchor";
 import { cn } from "../lib/cn";
@@ -52,6 +53,12 @@ export default function Navbar() {
               {link.label}
             </a>
           ))}
+          <Link
+            to="/guides/lima"
+            className="focus-ring rounded-sm text-sm text-zinc-400 transition-colors hover:text-zinc-100"
+          >
+            Lima Guide
+          </Link>
         </nav>
 
         <div className="flex items-center gap-2">

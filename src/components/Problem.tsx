@@ -8,10 +8,10 @@ export default function Problem() {
         <div className="mx-auto max-w-3xl">
           <div className="eyebrow">The problem</div>
           <h2 className="display-tight mt-5 text-4xl font-extrabold text-zinc-50 sm:text-5xl lg:text-6xl">
-            Other tools watch for failure.
+            Most monitors catch link-down.
             <br />
             <span className="text-gradient-warm">
-              ARGUS watches for the gradient.
+              The slow failures are harder.
             </span>
           </h2>
         </div>
@@ -20,27 +20,26 @@ export default function Problem() {
           <article className="space-y-6 text-[17px] leading-[1.75] text-zinc-400">
             <p>
               A cable comes unplugged. Every fabric monitor sees it. SNMP traps
-              fire. Your scheduler drops the node. That's the easy{" "}
-              <span className="text-zinc-100">5%</span>.
+              fire. Your scheduler drops the node. That part is solved.
             </p>
             <p>
-              The other <span className="text-zinc-100">95%</span> never trips a
-              hard threshold. Symbol errors climb from zero to fifty per second.
-              CQ completion latency drifts from{" "}
+              The harder problem is gradual degradation. Symbol errors climb
+              from zero to fifty per second. CQ completion latency drifts
+              from{" "}
               <span className="font-mono text-meadow-400">2µs</span> to{" "}
               <span className="font-mono text-energy-500">12µs</span>. NAPI
               saturates on a NIC stuck behind a noisy neighbor. The link is{" "}
               <em className="not-italic text-zinc-200">up</em>. Your dashboard
-              stays green. And a 64-node training run runs four times slower
-              than it should because the slowest collective dominates. You find
-              out when a user files a ticket two days later.
+              stays green. And a 64-node training run crawls because the
+              slowest collective dominates. You find out when someone files
+              a ticket two days later.
             </p>
             <p>
-              ARGUS reads the signals before they cross the threshold. Eleven
-              detection rules fused with confidence weighting and dwell-timed
-              state transitions, smoothed against false positives by
-              construction. By the time anything visibly breaks, the bad node is
-              already drained, and resumed once it recovers.
+              ARGUS watches for exactly this kind of drift. Eleven detection rules,
+              each with a confidence weight, feed a state machine with
+              dwell timers so isolated noise doesn&apos;t trigger action.
+              When correlated signals hold long enough, the node gets
+              drained. When they clear, it gets resumed.
             </p>
           </article>
 
@@ -51,17 +50,17 @@ export default function Problem() {
           <Pillar
             tone="argus"
             heading="Predictive"
-            body="latency_drift z-score and rising_error_trend fire before a hard threshold is breached. You see degradation before it impacts the workload."
+            body="Rules like latency_drift (z-score) and rising_error_trend fire while signals are still trending, before a hard threshold is breached."
           />
           <Pillar
             tone="energy"
-            heading="Multi-signal fusion"
-            body="A single signal lies. Eleven rules with confidence weighting and EWMA + peak-hold smoothing. Isolated noise stays below the dwell timer; correlated clusters trip transitions."
+            heading="Multi-signal"
+            body="Any single counter can be noisy. Eleven rules with confidence weighting and EWMA + peak-hold smoothing reduce the problem. The dwell timer ensures transient spikes don't cause action."
           />
           <Pillar
             tone="pop"
             heading="Closed loop"
-            body="ARGUS issues scontrol drain on Critical state and scontrol resume on recovery. Operator holds prevent ARGUS from resuming externally-drained nodes."
+            body="On Critical, ARGUS runs scontrol drain. On recovery, scontrol resume. Operator holds let you pin a node as drained so ARGUS won't resume it."
           />
         </div>
       </div>
